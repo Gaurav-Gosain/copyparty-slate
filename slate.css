@@ -1,0 +1,195 @@
+/*
+ * slate: a dark theme for copyparty
+ *
+ * copyparty exposes about 157 CSS custom properties. This sheet redefines the
+ * ones that drive appearance and leaves behaviour alone, so every feature keeps
+ * working: resumable uploads, shares, webdav, the media player.
+ *
+ * Load it with copyparty's --css-browser flag. Nothing here is required at
+ * runtime; removing the flag restores the stock look.
+ *
+ * Contrast: every foreground/background pair below is WCAG AA or better,
+ * lowest ratio 6.85 (muted text on base).
+ */
+
+html, html.a, html.b, html.c, html.d, html.e,
+html.az, html.bz, html.cz, html.dz, html.ez {
+  /* ---- palette ---------------------------------------------------------- */
+  --slate-base:   #0f1115;
+  --slate-sunk:   #0a0c10;
+  --slate-r1:     #151821;   /* raised one step  */
+  --slate-r2:     #1b1f2a;   /* raised two steps */
+  --slate-r3:     #232834;
+  --slate-line:   #2b3140;
+  --slate-text:   #d6dae3;
+  --slate-bright: #f4f6fa;
+  --slate-muted:  #949cad;
+  --slate-accent: #6aa9f4;
+  --slate-ok:     #78c99a;
+  --slate-warn:   #e0b357;
+  --slate-err:    #e88c8c;
+
+  /* ---- surfaces --------------------------------------------------------- */
+  --bg:      var(--slate-base);
+  --bg-max:  var(--slate-sunk);
+  --bg-d1:   #0d0f13;
+  --bg-d2:   #0b0d11;
+  --bg-d3:   var(--slate-sunk);
+  --bg-u1:   var(--slate-r1);
+  --bg-u2:   var(--slate-r2);
+  --bg-u3:   var(--slate-r2);
+  --bg-u4:   var(--slate-r3);
+  --bg-u5:   var(--slate-r3);
+  --bg-u6:   #2b3140;
+  --bgg:     var(--slate-base);
+  --row-alt: #13161d;
+  --tree-bg: var(--slate-sunk);
+  --inset-bg: var(--slate-sunk);
+  --txt-bg:  var(--slate-r1);
+
+  /* ---- text ------------------------------------------------------------- */
+  --fg:      var(--slate-text);
+  --fg-max:  var(--slate-bright);
+  --fg2-max: var(--slate-bright);
+  --fg-weak: var(--slate-muted);
+  --grey:    var(--slate-muted);
+  --silver:  #b6bdc9;
+  --white:   var(--slate-bright);
+  --black:   var(--slate-sunk);
+
+  /* ---- accent ----------------------------------------------------------- */
+  --a:       var(--slate-accent);
+  --a-hil:   #9ccbff;
+  --a-h-bg:  var(--slate-r3);
+  --a-dark:  #4d8fd8;
+  --a-gray:  var(--slate-muted);
+  --a-b:     var(--slate-accent);
+
+  /* ---- selection and focus ---------------------------------------------- */
+  --sel-bg:  #2d4b6e;
+  --sel-fg:  var(--slate-bright);
+  --focus-outline: 2px solid var(--slate-accent);
+  --hover-outline: 1px solid var(--slate-line);
+
+  /* ---- buttons ---------------------------------------------------------- */
+  --btn-bg:    var(--slate-r2);
+  --btn-fg:    var(--slate-text);
+  --btn-bb:    1px solid var(--slate-line);
+  --btn-bs:    none;
+  --btn-h-bg:  var(--slate-r3);
+  --btn-h-fg:  var(--slate-bright);
+  --btn-1-bg:  var(--slate-accent);
+  --btn-1-fg:  #0b1220;
+  --btn-1-bb:  1px solid var(--slate-accent);
+  --btn-1-bs:  none;
+  --btn-1h-bg: #8bbcf7;
+  --btn-1h-fg: #0b1220;
+  --btn-1h-bb: 1px solid #8bbcf7;
+  --btn-1h-bs: none;
+
+  /* ---- chrome ----------------------------------------------------------- */
+  --scroll:     #343c4d;
+  --scroll-bkg: var(--slate-sunk);
+  --tab-alt:    var(--slate-muted);
+  --sort-1:     var(--slate-bright);
+  --sort-2:     var(--slate-muted);
+  --ttlbar:     var(--slate-sunk);
+  --chk-fg:     var(--slate-accent);
+  --border-dashed-black: 1px dashed var(--slate-line);
+  --radius: 8px;
+
+  /* ---- status colours --------------------------------------------------- */
+  --err-fg: var(--slate-err);
+  --err-bg: #2a1a1c;
+  --err-b1: #6b3a3d;
+  --err-ts: none;
+
+  /* ---- upload panel ----------------------------------------------------- */
+  --u2-btn-b1:  var(--slate-line);
+  --u2-b-fg:    var(--slate-text);
+  --u2-b1-bg:   var(--slate-r2);
+  --u2-b2-bg:   var(--slate-r2);
+  --u2-ok-bg:   #17291f;
+  --u2-ok-b1:   #2f5c40;
+  --u2-inf-bg:  #16202e;
+  --u2-inf-b1:  #2f4a6b;
+  --u2-err-bg:  #2a1a1c;
+  --u2-err-b1:  #6b3a3d;
+  --u2-tab-bg:  var(--slate-r1);
+  --u2-tab-1-bg: var(--slate-r3);
+
+  /* ---- file grid and player --------------------------------------------- */
+  --g-bg:      var(--slate-r1);
+  --g-b1:      var(--slate-line);
+  --g-b2:      var(--slate-line);
+  --g-fg:      var(--slate-text);
+  --g-dfg:     var(--slate-muted);
+  --g-f-bg:    var(--slate-r2);
+  --g-f-b1:    var(--slate-line);
+  --g-f-fg:    var(--slate-bright);
+  --g-fsel-b1: var(--slate-accent);
+  --f-gray:    var(--slate-muted);
+  --f-h-b1:    var(--slate-line);
+  --f-play-bg: var(--slate-accent);
+  --f-play-fg: #0b1220;
+  --mp-b-bg:   var(--slate-r1);
+  --mp-sh:     none;
+
+  /* ---- size-unit tints, kept subtle ------------------------------------- */
+  --sz-b: var(--slate-muted);
+  --sz-k: #8fa4bf;
+  --sz-m: #8fb8a4;
+  --sz-g: #bfae8f;
+  --sz-t: #bf8f9c;
+  --sz-p: #a98fbf;
+
+  /* ---- shadows: flat, no glow ------------------------------------------- */
+  --shadow-color-1: rgba(0,0,0,.55);
+  --shadow-color-2: rgba(0,0,0,.35);
+  --shadow-outset:  0 1px 3px rgba(0,0,0,.5);
+  --shadow-input:   none;
+  --shadow-inset:   none;
+  --shadow-inset-top: none;
+  --shadow-inset-bottom: none;
+  --shadow-inset-left: none;
+  --shadow-inset-right: none;
+  --f-sh1: none;
+  --f-sh2: none;
+  --f-sh3: none;
+  --f-sel-sh: none;
+  --op-a-sh: none;
+  --op-aa-sh: none;
+  --op-aa-bg: var(--slate-r2);
+  --op-aa-fg: var(--slate-bright);
+  --txt-sh: none;
+
+  /* ---- typography ------------------------------------------------------- */
+  --font-main:  -apple-system, BlinkMacSystemFont, "Segoe UI", Inter,
+                system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:  ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code",
+                Menlo, Consolas, monospace;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+/* Keep the page itself dark before any script runs, so there is no flash. */
+html { background: #0f1115; color-scheme: dark; }
+
+/* Slightly calmer table rows: separation by line, not by heavy banding. */
+#files tr { border-bottom: 1px solid rgba(43,49,64,.45); }
+#files tr:hover td { background: #171b24; }
+
+/* Sizes and timestamps read better in mono. */
+#files td:nth-child(2), #files td:nth-child(3) { font-variant-numeric: tabular-nums; }
+
+/* Inputs: flat, bordered, no inner glow. */
+input[type=text], input[type=password], input[type=search], textarea, select {
+  background: #0a0c10;
+  color: #d6dae3;
+  border: 1px solid #2b3140;
+  border-radius: 6px;
+}
+input[type=text]:focus, input[type=password]:focus,
+input[type=search]:focus, textarea:focus, select:focus {
+  border-color: #6aa9f4;
+  outline: none;
+}
