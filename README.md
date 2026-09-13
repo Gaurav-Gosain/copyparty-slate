@@ -32,29 +32,9 @@ Every foreground and background pair is WCAG AA or better. The lowest ratio is
 
 Status colours are `#78c99a` ok, `#e0b357` warning, `#e88c8c` error.
 
-## Two parts
-
-`slate.css` handles colour. `slate.js` handles labels.
-
-copyparty builds its toolbars in JavaScript and labels most controls with a
-single emoji: a rocket for upload, a fire extinguisher for undo, a trumpet for
-the media player. That is compact, but unreadable unless you already know the
-vocabulary, and CSS cannot reach it because the text lives in the DOM.
-
-`slate.js` swaps them for words, using copyparty's own tooltips as the source of
-truth. It only rewrites label text; ids, classes, handlers and layout are left
-alone, so nothing breaks. A MutationObserver reapplies it when copyparty rebuilds
-a toolbar after a tab switch.
-
-Anything not in its lookup table keeps working: unknown controls have decoration
-stripped only when readable text remains, so a control is never left blank.
-
-Either file works without the other.
-
 ## Install
 
-Put `slate.css` and `slate.js` somewhere the browser can fetch, then point
-copyparty at them.
+Put `slate.css` somewhere the browser can fetch, then point copyparty at it.
 
 Serving it through a reverse proxy keeps it outside copyparty's auth, so the
 stylesheet loads on the login page too. With Caddy:
@@ -71,11 +51,10 @@ Then in your copyparty config:
 
     [global]
       css-browser: /_theme/slate.css
-      js-browser: /_theme/slate.js
 
 or on the command line:
 
-    copyparty --css-browser /_theme/slate.css --js-browser /_theme/slate.js
+    copyparty --css-browser /_theme/slate.css
 
 Restart copyparty. Confirm it is loading:
 
@@ -86,8 +65,8 @@ the overrides take effect.
 
 ## Removing it
 
-Delete the `css-browser` and `js-browser` lines and restart. Nothing else
-changes; the stock look comes back. Neither file adds state or dependencies.
+Delete the `css-browser` line and restart. Nothing else changes; the stock
+theme comes back. This sheet adds no state and no dependencies.
 
 ## Notes
 
